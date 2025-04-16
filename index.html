@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Dusun Jomboran</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Banner */
+        .banner {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+        
+        .banner-content {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .banner h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #2e7d32;
+            font-size: 2rem;
+        }
+        
+        .section-content {
+            margin-bottom: 30px;
+        }
+        
+        /* Profile Grid */
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        /* Activities */
+        .activities-list {
+            margin: 20px 0;
+        }
+        
+        .activity-item {
+            margin-bottom: 30px;
+        }
+        
+        .activity-title {
+            font-size: 1.5rem;
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+        
+        /* Green Initiative */
+        .image-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .image-container {
+            position: relative;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        
+        .image-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        /* Challenges & Solutions */
+        .challenges-solutions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .challenges-list, .solutions-list {
+            background-color: #f1f8e9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .challenges-list h3, .solutions-list h3 {
+            color: #1b5e20;
+            margin-bottom: 15px;
+        }
+        
+        .challenges-list ul, .solutions-list ul {
+            padding-left: 20px;
+        }
+        
+        .challenges-list li, .solutions-list li {
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2e7d32;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .profile-grid, .image-comparison, .challenges-solutions {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner {
+                height: 300px;
+            }
+            
+            .banner h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner with Village Name -->
+    <div class="banner">
+        <img src="img/gapura.jpg" alt="Jomboran Village" class="banner-img">
+        <div class="banner-overlay"></div>
+        <div class="banner-content">
+            <h1>Desa Jomboran</h1>
+            <p>Lorem Ipsum isi subtext</p>
+        </div>
+    </div>
+    
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="container">
+            <h2 class="section-title">Introduction</h2>
+            <div class="section-content">
+                <p>Pengantar.</p>
+                <p>Sejarah singkat.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Village Perspective Section -->
+    <section id="perspective">
+        <div class="container">
+            <h2 class="section-title">Selajung Pandang</h2>
+            <div class="section-content">
+                <p>At Jomboran, we believe in preserving our natural resources while embracing responsible growth and development. Our community is guided by several core principles:</p>
+                <ul>
+                    <li><strong>Environmental Stewardship:</strong> Lorem ipsum.</li>
+                    <li><strong>Cultural Preservation:</strong> Lorem Ipsum.</li>
+                    <li><strong>Collective Action:</strong> Lorem Ipsum.</li>
+                    <li><strong>Sustainable Development:</strong> Lorem Ipsum.</li>
+                </ul>
+                <p>Maka dari itu, bla bla bla.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Village Profile Section -->
+    <section id="profile">
+        <div class="container">
+            <h2 class="section-title">Profil Dusun</h2>
+            <div class="profile-grid">
+                <div class="demographics">
+                    <h3>Demografik</h3>
+                    <ul>
+                        <li><strong>Populasi:</strong> [Number] residents</li>
+                        <li><strong>Kepala Keluarga:</strong> [Number] households</li>
+                        <li><strong>Distribusi Usia:</strong>
+                            <ul>
+                                <li>Children (0-14): [Percentage]%</li>
+                                <li>Youth (15-24): [Percentage]%</li>
+                                <li>Adults (25-64): [Percentage]%</li>
+                                <li>Seniors (65+): [Percentage]%</li>
+                            </ul>
+                        </li>
+                        <li><strong>Pencaharian</strong> [List occupations] </li>
+                        <li><strong>Sarana Pendidikan:</strong> [Schools information]</li>
+                        <li><strong>Sarana Kesehatan:</strong> [Healthcare facilities]</li>
+                    </ul>
+                </div>
+                <div class="map">
+                    <h3>Peta Dusun</h3>
+                    <img src="/api/placeholder/600/400" alt="Map of Jomboran Village">
+                    <p><em>Peta menunjukkan desa berserta tempat-tempat penting</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Social Activities Section -->
+    <section id="activities">
+        <div class="container">
+            <h2 class="section-title">Kegiatan Kemasyarakatan</h2>
+            <div class="section-content">
+                <p>Pengantar kegiatan kemasyarakatan.</p>
+                
+                <div class="activities-list">
+                    <div class="activity-item">
+                        <h3 class="activity-title">Panen</h3>
+                        <p>Lorem Ipsum.</p>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <h3 class="activity-title">Kerja Bakti</h3>
+                        <p>Lorem Ipsum</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Go Green Section -->
+    <section id="go-green">
+        <div class="container">
+            <h2 class="section-title">Kegiatan Kampung Hijau</h2>
+            <div class="section-content">
+                <p>Sejarah singkat, pengantar</p>
+                
+                <h3>Upaya Desa Jomboran dalam mendukung Kegiatan Kampung Hijau</h3>
+                <ul>
+                    <li><strong>Waste Management System:</strong> Lorem Ipsum</li>
+                    <li><strong>Reforestation Project:</strong> Lorem Ipsum</li>
+                </ul>
+                
+                <div class="image-comparison">
+                    <div class="image-container">
+                        <img src="/api/placeholder/500/300" alt="Jomboran Before Green Initiative">
+                        <p class="image-caption">Before: </p>
+                    </div>
+                    <div class="image-container">
+                        <img src="/api/placeholder/500/300" alt="Jomboran After Green Initiative">
+                        <p class="image-caption">After: </p>
+                    </div>
+                </div>
+                
+                <p>Kesimpulan kegiatan</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Challenges and Solutions Section -->
+    <section id="challenges-solutions">
+        <div class="container">
+            <h2 class="section-title">Tantangan dan Solusi</h2>
+            <div class="section-content">
+                <p>While our Go Green initiative has achieved significant success, we continue to face challenges that require innovative solutions and community commitment.</p>
+                
+                <div class="challenges-solutions">
+                    <div class="challenges-list">
+                        <h3>Key Challenges</h3>
+                        <ul>
+                            <li><strong>Limited Resources:</strong> As a small rural village, we face budget constraints that sometimes slow the implementation of environmental projects.</li>
+                            <li><strong>Agricultural Traditions:</strong> Some older farmers remain hesitant to adopt new, more sustainable farming practices due to deeply rooted traditional methods.</li>
+                            <li><strong>Waste Disposal Infrastructure:</strong> Our remote location makes transportation of recyclable materials to processing centers difficult and costly.</li>
+                            <li><strong>Climate Change Impacts:</strong> Changing weather patterns have affected local crops and increased the frequency of extreme weather events.</li>
+                            <li><strong>Youth Migration:</strong> Many young people leave the village for education and employment opportunities in urban areas, reducing our workforce for community projects.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="solutions-list">
+                        <h3>Implemented Solutions</h3>
+                        <ul>
+                            <li><strong>Grant Applications:</strong> Forming a dedicated team to secure environmental grants and partnerships with NGOs to fund green initiatives.</li>
+                            <li><strong>Intergenerational Knowledge Exchange:</strong> Creating programs where younger villagers share modern sustainable practices while learning traditional wisdom from elders.</li>
+                            <li><strong>Community Recycling Center:</strong> Establishing a local processing facility for certain recyclables to reduce transportation needs.</li>
+                            <li><strong>Climate-Resilient Agriculture:</strong> Testing and implementing crop varieties and farming techniques better suited to changing climate conditions.</li>
+                            <li><strong>Remote Work Opportunities:</strong> Developing digital infrastructure to allow young residents to pursue careers while remaining in the village.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <p>Untuk ke depannya, kami berencana untuk bla bla bla.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Jomboran Village Profile | Disusun oleh </p>
+        </div>
+    </footer>
+</body>
+</html>
