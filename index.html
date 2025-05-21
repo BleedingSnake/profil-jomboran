@@ -66,6 +66,39 @@
             margin-bottom: 10px;
         }
         
+        /* Navigation */
+        nav {
+            background-color: #2e7d32;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 15px 0;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background-color: #1b5e20;
+        }
+        
         /* Sections */
         section {
             padding: 60px 0;
@@ -94,6 +127,27 @@
             margin-top: 20px;
         }
         
+        /* Google Map Embed */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            margin: 20px 0;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+        
+        /* Chart Container */
+        .chart-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 30px auto;
+        }
+        
         /* Activities */
         .activities-list {
             margin: 20px 0;
@@ -106,6 +160,89 @@
         .activity-title {
             font-size: 1.5rem;
             color: #1b5e20;
+            margin-bottom: 10px;
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .gallery-caption {
+            padding: 15px;
+            background-color: white;
+            text-align: center;
+        }
+        
+        /* Kelembagaan Grid */
+        .lembaga-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .lembaga-card {
+            background-color: #f1f8e9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .lembaga-card h3 {
+            color: #1b5e20;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 10px;
+        }
+        
+        /* Facilities */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .facility-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .facility-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .facility-info {
+            padding: 15px;
+        }
+        
+        .facility-info h3 {
+            color: #2e7d32;
             margin-bottom: 10px;
         }
         
@@ -168,9 +305,38 @@
             margin-top: 40px;
         }
         
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #2e7d32;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            opacity: 1;
+        }
+        
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .gallery, .facilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
-            .profile-grid, .image-comparison, .challenges-solutions {
+            .profile-grid, .image-comparison, .challenges-solutions, .lembaga-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -182,27 +348,52 @@
                 font-size: 2.5rem;
             }
         }
+        
+        @media (max-width: 576px) {
+            .gallery, .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
     <!-- Banner with Village Name -->
     <div class="banner">
-        <img src="img/gapura.jpg" alt="Jomboran Village" class="banner-img">
+        <img src="./img/gap-jom.JPG" alt="Jomboran Village" class="banner-img">
         <div class="banner-overlay"></div>
         <div class="banner-content">
-            <h1>Desa Jomboran</h1>
-            <p>Lorem Ipsum isi subtext</p>
+            <h1>Dusun Jomboran</h1>
+            <p>Profil Dusun Jomboran</p>
         </div>
     </div>
+    
+    <!-- Navigation Menu -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#introduction">Perkenalan</a></li>
+            <li><a href="#profile">Profil Dusun</a></li>
+            <li><a href="#kelembagaan">Kelembagaan</a></li>
+            <li><a href="#facilities">Fasilitas</a></li>
+            <li><a href="#activities">Kegiatan</a></li>
+            <li><a href="#kuliner">Kuliner</a></li>
+            <li><a href="#kesenian">Kesenian</a></li>
+            <li><a href="#go-green">Kampung Hijau</a></li>
+        </ul>
+    </nav>
     
     <!-- Introduction Section -->
     <section id="introduction">
         <div class="container">
-            <h2 class="section-title">Introduction</h2>
+            <h2 class="section-title">Perkenalan</h2>
             <div class="section-content" align="justify">
-                <p>Suasana dusun yang berada di penghujung selatan Sendangagung ini masih tampak hijau nan asri. Sawah hijau tampak menghampar berdampingan dengan dusun yang tenteram dan damai. Kehidupan masyarakat yang bersahaja sebagaimana kesederhanaan masyarakat pedesaan. Di pintu masuk dusun terdapat bangunan kecil yang terawat baik. Bangunan tersebut adalah gardu jaga peninggalan pemerintahan Kolonial Belanda. Keterawatan gardu menandakan bahwa masyarakat dusun sangat menghormati sejarah para pendahulunya..</p><br>
+                <p>Suasana dusun yang berada di penghujung selatan Sendangagung ini masih tampak hijau nan asri. Sawah hijau tampak menghampar berdampingan dengan dusun yang tenteram dan damai. Kehidupan masyarakat yang bersahaja sebagaimana kesederhanaan masyarakat pedesaan. Di pintu masuk dusun terdapat bangunan kecil yang terawat baik. Bangunan tersebut adalah gardu jaga peninggalan pemerintahan Kolonial Belanda. Keterawatan gardu menandakan bahwa masyarakat dusun sangat menghormati sejarah para pendahulunya.</p><br>
                 <p>Pada awalnya daerah ini merupakan hutan belantara yang ditumbuhi berbagai macam tumbuhan besar. Seorang pengembara yang dikenal dengan nama Mbah Jombor beserta kerabatnya sampai di tempat ini. Mbah Jombor dibantu oleh kerabatnya membuka hutan untuk dijadikan tempat tinggal. Mbah Jombor juga membuka hutan untuk bercocok tanam. Lama-kelamaan daerah yang mulanya hutan berubah menjadi tempat pemukiman.</p><br>
-                <p>Mbah Jombor menetap di daerah ini sampai akhir hayatnya. Anak dan cucu Mbah Jombor bertambah banyak sehingga daerah tempat tinggal bertambah luas. Akhirnya daerah ini menjadi sebuah dusun yang penduduknya cukup banyak. Jika orang dari daerah lain ingin ke tempat ini selalu mengatakan “Jombor” meskipun Mbah Jombor sudah meninggal dunia. Lama-kelamaan kata “Jombor” menjadi biasa dan akhirnya daerah ini diberi nama Jomboran. Untuk menghormati Mbah Jombor, makamnya dirawat dengan baik oleh warga Dusun Jomboran.</p><br>
+                <p>Mbah Jombor menetap di daerah ini sampai akhir hayatnya. Anak dan cucu Mbah Jombor bertambah banyak sehingga daerah tempat tinggal bertambah luas. Akhirnya daerah ini menjadi sebuah dusun yang penduduknya cukup banyak. Jika orang dari daerah lain ingin ke tempat ini selalu mengatakan "Jombor" meskipun Mbah Jombor sudah meninggal dunia. Lama-kelamaan kata "Jombor" menjadi biasa dan akhirnya daerah ini diberi nama Jomboran. Untuk menghormati Mbah Jombor, makamnya dirawat dengan baik oleh warga Dusun Jomboran.</p><br>
+                <div class="image-container">
+                    <img src="./img/scenery2.JPG" alt="Pemandangan Dusun Jomboran">
+                    <p class="image-caption">Pemandangan asri Dusun Jomboran</p>
+                </div>
             </div>
         </div>
     </section>
@@ -210,16 +401,19 @@
     <!-- Village Perspective Section -->
     <section id="perspective">
         <div class="container">
-            <h2 class="section-title">Selajung Pandang</h2>
+            <h2 class="section-title">Selayang Pandang</h2>
             <div class="section-content">
-                <p>At Jomboran, we believe in preserving our natural resources while embracing responsible growth and development. Our community is guided by several core principles:</p>
+                <p>Dusun Jomboran memiliki visi dan misi untuk menjadi dusun yang lestari dengan menjaga kelestarian alam sambil merangkul pertumbuhan dan pembangunan yang bertanggung jawab. Komunitas kami dipandu oleh beberapa prinsip inti:</p><br>
                 <ul>
-                    <li><strong>Environmental Stewardship:</strong> Lorem ipsum.</li>
-                    <li><strong>Cultural Preservation:</strong> Lorem Ipsum.</li>
-                    <li><strong>Collective Action:</strong> Lorem Ipsum.</li>
-                    <li><strong>Sustainable Development:</strong> Lorem Ipsum.</li>
+                    <li><strong>Visi: </strong> Terwujudnya Padukuhan Jomboran XV yang maju, sejahtera, aman , nyaman, berwibawa dan Banyak manfaat dalam kehidupan bermasyarakat..</li>
+                    <li><strong>Misi:</strong>Meningkatkan kualitas kehidupan masyarakat dengan pemberdayaan potensi di bidang Agama, Ekonomi, Pendidikan, Sosial, Budaya dan Keamanan. </li>
+                    <br>
                 </ul>
-                <p>Maka dari itu, bla bla bla.</p>
+                <p>Dengan prinsip-prinsip ini, Dusun Jomboran terus berkembang menjadi contoh bagaimana kehidupan tradisional dapat hidup berdampingan dengan praktik modern yang berkelanjutan.</p>
+                <div class="image-container">
+                    <img src="./img/activ.JPG" alt="Aktivitas Masyarakat Jomboran">
+                    <p class="image-caption">Aktivitas masyarakat Dusun Jomboran</p>
+                </div>
             </div>
         </div>
     </section>
@@ -230,32 +424,166 @@
             <h2 class="section-title">Profil Dusun</h2>
             <div class="profile-grid">
                 <div class="demographics" align="justify">
-                    <h3>Demografik</h3>
-                    <p>Jumlah penduduk Dusun Jomboran menurut pendataan pada tahun  2016 adalah  201 jiwa penduduk laki-laki dan 206 jiwa penduduk perempuan. Jika dikelompokkan menurut usia maka dapat dibedakan dalam kelompok:</p>
+                    <h3>Identitas Padukuhan</h3>
+                    <p>Padukuhan Jomboran terletak di Kalurahan Sedangagug, Kapanewon Minggir, Kabupaten Sleman. Luas wilayah Jomboran sekitar 24.8 Hektar, dengan perbatasan: </p>
                     <p></p>
                     <ul>
-                        <li><strong>Populasi:</strong> 407 jiwa</li>
-                        <li><strong>Kepala Keluarga:</strong> 15 </li>
-                        <li><strong>Distribusi Usia:</strong>
-                            <ul>
-                                <li>Pelajar: 68 Jiwa</li>
-                                <li>Usia Produktif: 206 Jiwa</li>
-                                <li>Usia Lanjut: 68 Jiwa</li>
-                            </ul>
-                        </li>
-                        <br>
-                        <li><strong>Pencaharian</strong> </li>
-                        <p>Mata pencaharian warga Dusun Jomboran bervariasi. Profesi yang digeluti warga adalah sebagai pedagang, petani, buruh tani, pensiunan pegawai negeri dan TNI/Polri, serta usaha di bidang swasta. Sebagaian besar warga bekerja sebagai petani. Kegiatan pertanian di dusun ini sangat baik karena didukung oleh irigasi yang cukup memadai. Dalam setahun petani dapat melakukan tiga kali panen. Kadang kala petani harus menanggung gagal panen karena serangan hama tikus dan wereng.</p><br>
-                        <p>Para  petani biasanya akan banyak kesibukan pada musim tanam dan panen. Untuk mengisi kesibukan, selain bertani masyarakat memanfaatkan waktu luang dengan membuat kerajinan. Kerajinan yang banyak diminati adalah anyaman besek. Selain bahan mudah baku berupa bambu yang mudah didapat, pemasaran besek sangat mudah. Pengrajin tidak perlu pergi ke pasar untuk menjual produknya, para pengumpul besek sudah berkeliling kampung untuk  menampung besek.</p> <br>
-                        <p>Jenis kerajinan lain yang banyak digeluti warga adalah anyaman tikar. Pada umumnya para penganyam adalah kaum perempuan. Jarang sekali para laki-laki yang menekuni anyaman tikar. Selain rumit, dibutuhkan kesabaran yang tinggi mengingat bahan dasar mendong ini mudah patah jika cuaca cukup panas. Hasil kerajinan tikar dijual ke Pasar Kebonagung setiap pasaran Pon dan Kliwon. Anyaman tikar dari daerah Sendangagung dikenal luas ke berbagai  daerah. Pada era tahun 1960-1980  hasil kerajinan tikar dipasarkan sampai ke daerah Banyumas, Jawa Tengah</p> <br>
-                        <li><strong>Sarana Pendidikan:</strong> [Schools information]</li>
-                        <li><strong>Sarana Kesehatan:</strong> [Healthcare facilities]</li>
+                        <li><strong>Timur : Kalurahan Sendangmulyo</strong></li>
+                        <li><strong>Utara : Padukuhan Nanggulan XIV</strong></li>
+                        <li><strong>Barat : Kabupaten Kulonprogo</strong></li>
+                        <li><strong>Selatan : Kabupaten Kulonprogo</strong></li>
+
+                    <br>
+                    <h3>Mata Pencaharian</h3>
+                    <p>Mata pencaharian penduduk Padukuhan Jomboran mayoritas adalah petani, disusul dengan wiraswasta, wirausaha pangan,  ASN, dan lain-lain.</p><br>
+                    
+                    <!-- Pie Chart for Occupations -->
+                    <div class="chart-container">
+                        <canvas id="occupationChart"></canvas>
+                    </div>  
+                    
+                    <h3>Sarana Kesehatan</h3>
+                    <p>Untuk layanan kesehatan, warga Dusun Jomboran dapat mengakses:</p>
+                    <ul>
+                        <li>Posyandu yang diadakan rutin</li>
+                        <li>Puskesmas di tingkat kecamatan</li>
                     </ul>
                 </div>
-                <div class="map">
+                <div>
                     <h3>Peta Dusun</h3>
-                    <img src="/api/placeholder/600/400" alt="Map of Jomboran Village">
-                    <p><em>Peta menunjukkan desa berserta tempat-tempat penting</em></p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15812.464380956624!2d110.30394419029073!3d-7.81988144519104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7af7c94c2e98ed%3A0x91e0e82a31e80b4!2sJomboran%2C%20Sendangagung%2C%20Kec.%20Minggir%2C%20Kabupaten%20Sleman%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sen!2sid!4v1714539607121!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p><em>Peta menunjukkan lokasi dan jalanan Dusun Jomboran</em></p>
+                    
+                    <h3>Street View</h3>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!4v1714539683197!6m8!1m7!1sCAoSLEFGMVFpcE9UU1dZeGFENkFGZDgtdEM5WkFORHg3aUpIdDJHRWU0Q3pOYzdQ!2m2!1d-7.818943399999999!2d110.3104767!3f186.03!4f0!5f0.7820865974627469" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <p><em>Street view dari jalan utama Dusun Jomboran</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Kelembagaan Section -->
+    <section id="kelembagaan">
+        <div class="container">
+            <h2 class="section-title">Kelembagaan Padukuhan</h2>
+            <div class="section-content">
+                <p>Dusun Jomboran memiliki struktur kelembagaan yang aktif dalam mendukung berbagai aspek kehidupan masyarakat. Berikut adalah lembaga-lembaga yang ada di Dusun Jomboran:</p>
+                
+                <div class="lembaga-grid">
+                    <div class="lembaga-card">
+                        <h3>Pemerintahan Dusun</h3>
+                        <ul>
+                            <li><strong>Kepala Dusun:</strong> Bapak Tandi</li>
+                            <li><strong>Sekretaris Dusun:</strong> Ibu Sutini</li>
+                            <li><strong>Bendahara Dusun:</strong> Bapak Widodo</li>
+                        </ul>
+                        <div class="image-container">
+                            <img src="/api/placeholder/500/300" alt="Kantor Dusun Jomboran">
+                            <p class="image-caption">Kantor Dusun Jomboran</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lembaga-card">
+                        <h3>Karang Taruna</h3>
+                        <p>Karang Taruna adalah organisasi sosial kepemudaan yang dibentuk oleh masyarakat desa/dusun sebagai wadah pengembangan generasi muda.</p><br>
+                        <div class="image-container">
+                            <img src="./img/taruna2.jpg" alt="Kegiatan Karang Taruna">
+                            <p class="image-caption">Kegiatan Karang Taruna Jomboran</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lembaga-card">
+                        <h3>PKK (Pemberdayaan Kesejahteraan Keluarga)</h3>
+                        <p>PKK adalah gerakan nasional dalam pembangunan masyarakat yang tumbuh dari bawah, dikelola oleh dan untuk masyarakat, khususnya kaum ibu.</p><br>
+                        </ul>
+                        <div class="image-container">
+                            <img src="/api/placeholder/500/300" alt="Kegiatan PKK">
+                            <p class="image-caption">Kegiatan PKK Dusun Jomboran</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lembaga-card">
+                        <h3>Kelompok Tani</h3>
+                        <p>Kumpulan petani atau individu yang bekerjasama dalam mengelola lahan petanian, betujuan berbagi pengetahuan dan meningkatkan hasil pertanian.</p><br>
+                        <div class="image-container">
+                            <img src="./img/tani.JPG" alt="Kelompok Tani">
+                            <p class="image-caption">Aktivitas Kelompok Tani Jomboran</p>
+                        </div>
+                    </div>
+                    
+                    <div class="lembaga-card">
+                        <h3>KWT</h3>
+                        <p>KWT adalah kelompok perempuan yang bergerak di bidang pertanian dan ketahanan pangan, dibentuk atas inisiatif warga atau fasilitasi pemerintah desa/dinas pertanian.</p><br>
+                        <div class="image-container">
+                            <img src="./img/kwt.jpeg" alt="Kegiatan Pengajian">
+                            <p class="image-caption">Kegiatan KWT</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Facilities Section -->
+    
+<section id="facilities">
+        <div class="container">
+            <h2 class="section-title">Fasilitas Dusun</h2>
+            <div class="section-content">
+                <p>Dusun Jomboran memiliki berbagai fasilitas yang mendukung aktivitas masyarakat sehari-hari:</p>
+                
+                <div class="facilities-grid">
+                    <div class="facility-card">
+                        <img src="/api/placeholder/400/250" alt="Masjid" class="facility-img">
+                        <div class="facility-info">
+                            <h3>Masjid Al-Amin</h3>
+                            <p>Pusat kegiatan keagamaan dan sosial bagi masyarakat. Dilengkapi dengan tempat wudhu, perpustakaan mini, dan area belajar untuk anak-anak.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <img src="/api/placeholder/400/250" alt="Mushola" class="facility-img">
+                        <div class="facility-info">
+                            <h3>Mushola Al-Huda</h3>
+                            <p>Tempat ibadah yang melayani kebutuhan spiritual masyarakat sekitar dengan kegiatan pengajian rutin dan pembelajaran Al-Quran.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <img src="./img/gereja.JPG" alt="Gereja" class="facility-img">
+                        <div class="facility-info">
+                            <h3>Gereja Kerasulan Baru</h3>
+                            <p>Tempat ibadah bagi umat Kristiani di Dusun Jomboran dan sekitarnya, menjadi simbol keberagaman dan toleransi di dusun.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <img src="./img/pos.JPG" alt="Pos Ronda" class="facility-img">
+                        <div class="facility-info">
+                            <h3>Pos Ronda</h3>
+                            <p>Dusun Jomboran memiliki 3 pos ronda yang terletak di RT 01 sejumlah 2 dan di RT 04 sejumlah 1, sebagai pusat keamanan lingkungan oleh warga.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <img src="./img/grave.JPG" alt="Makam" class="facility-img">
+                        <div class="facility-info">
+                            <h3>Makam</h3>
+                            <p>Makam warga Dusun Jomboran terletak di RT 01, dikelola dengan baik oleh pengurus dusun dan masyarakat setempat.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="facility-card">
+                        <img src="./img/road.JPG" alt="Infrastruktur" class="facility-img">
+                        <div class="facility-info">
+                            <h3>Infrastruktur Padukuhan</h3>
+                            <p>Di Padukuhan Jomboran terdapat fasilitas jalan yang memadai dan penerangan jalan yang mencukupi di setiap jalannya, mendukung mobilitas dan keamanan warga.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -266,19 +594,161 @@
         <div class="container">
             <h2 class="section-title">Kegiatan Kemasyarakatan</h2>
             <div class="section-content">
-                <p>Pengantar kegiatan kemasyarakatan.</p>
+                <p>Dusun Jomboran memiliki berbagai kegiatan kemasyarakatan yang aktif diikuti oleh warga dan menjadi karakteristik kehidupan sosial di dusun ini:</p>
                 
                 <div class="activities-list">
                     <div class="activity-item">
-                        <h3 class="activity-title">Panen</h3>
-                        <p>Lorem Ipsum.</p>
+                        <h3 class="activity-title">Kampung Hijau</h3>
+                        <div class="image-container">
+                            <img src="./img/kmphijau.PNG" alt="Kegiatan Kampung Hijau">
+                            <p class="image-caption">Penghijauan lingkungan dalam program Kampung Hijau</p>
+                        </div>
+                        <p>Kampung Hijau merupakan program unggulan Dusun Jomboran yang berfokus pada pelestarian lingkungan. Kegiatan ini meliputi observasi lingkungan Padukuhan, sosialisasi di semua Lembaga Padukuhan, kerja bakti lingkungan, pengolahan sampah mandiri, serta perawatan dan penanaman tumbuh-tumbuhan. Program ini bertujuan menciptakan lingkungan yang asri, sehat, dan berkelanjutan bagi seluruh warga.</p>
                     </div>
                     
                     <div class="activity-item">
                         <h3 class="activity-title">Kerja Bakti</h3>
-                        <p>Lorem Ipsum</p>
+                        <div class="image-container">
+                            <img src="./img/kerjabakti.PNG" alt="Kegiatan Kerja Bakti">
+                            <p class="image-caption">Warga Dusun Jomboran dalam kegiatan kerja bakti membersihkan lingkungan</p>
+                        </div>
+                        <p>Kegiatan kerja bakti menjadi rutinitas bulanan warga Dusun Jomboran. Setiap awal bulan, warga berkumpul untuk membersihkan lingkungan, memperbaiki fasilitas umum, dan menjaga kebersihan saluran air. Kegiatan ini tidak hanya menjaga kebersihan dusun tetapi juga memperkuat rasa kebersamaan dan gotong royong antar warga.</p>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <h3 class="activity-title">Posyandu</h3>
+                        <div class="image-container">
+                            <img src="./img/posyandu.JPG" alt="Kegiatan Posyandu">
+                            <p class="image-caption">Pelayanan Posyandu untuk balita dan lansia</p>
+                        </div>
+                        <p>Posyandu diadakan secara rutin setiap bulan untuk memantau kesehatan balita dan lansia. Kegiatan ini meliputi penimbangan berat badan, pemeriksaan kesehatan dasar, imunisasi, dan pemberian makanan tambahan. Kader-kader Posyandu yang terlatih dengan dibantu bidan desa menjalankan kegiatan ini dengan penuh dedikasi.</p>
                     </div>
 
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Kuliner Section -->
+    <section id="kuliner">
+        <div class="container">
+            <h2 class="section-title">Usaha Kuliner Mikro, Kecil, dan Menengah (UMKM)</h2>
+            <div class="section-content">
+                <p>Padukuhan Jomboran merupakan salah satu wilayah yang memiliki potensi ekonomi lokal yang cukup kuat, terutama dalam bidang usaha mikro, kecil, dan menengah (UMKM). Masyarakat Jomboran dikenal memiliki semangat kewirausahaan yang tinggi, yang terlihat dari banyaknya pelaku UMKM yang tersebar di wilayah ini. Beberapa produk unggulan dari UMKM di Jomboran antara lain:</p>
+                
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="./img/wingko.PNG" alt="Wingko Jomboran" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Wingko</h3>
+                            <p>Wingko produksi Jomboran memiliki rasa yang legit dengan bahan baku kelapa berkualitas tanpa bahan pengawet. Wingko Jomboran memiliki cita rasa khas dengan tekstur yang unik, bagian luar terasa lebih crispy sementara bagian dalam tetap lembut dan legit. Produk wingko tanpa bahan pengawet ini dapat bertahan kurang lebih selama 5 hari. UMKM wingko di Jomboran diharapkan kedepannya dapat merambah ke pasar digital untuk memperluas jangkauan pemasaran.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="./img/mochi.PNG" alt="Mochi Jomboran" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Mochi</h3>
+                            <p>Jomboran memiliki sejumlah produsen mochi dengan cita rasa khas dan tekstur yang lembut. Produk ini menjadi favorit oleh-oleh khas daerah yang banyak diminati, baik oleh warga lokal maupun wisatawan. Inovasi rasa dan kemasan yang terus berkembang membuat mochi Jomboran mampu bersaing di pasar yang lebih luas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="./img/putu.PNG" alt="Kue Putu" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Kue Putu</h3>
+                            <p>Putu tradisional buatan warga Jomboran merupakan salah satu UMKM baru yang mulai tumbuh di padukuhan ini. Dibuat dari tepung beras dengan isian gula merah dan aroma pandan yang khas, putu ini dimasak dengan cara tradisional menggunakan uap bambu yang menambah daya tarik tersendiri. Meski tergolong baru, produk putu Jomboran sudah mulai dikenal karena cita rasanya yang otentik dan menjadi camilan favorit berbagai kalangan.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="./img/peyek.PNG" alt="Peyek Jomboran" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Peyek</h3>
+                            <p>Usaha keripik peyek di Dusun Jomboran merupakan wujud pelestarian kuliner tradisional sekaligus penggerak ekonomi lokal. Keripik peyek ini memiliki cita rasa gurih khas, tekstur renyah, dan aroma rempah yang menggoda. Diproduksi secara higienis namun tetap mengusung sentuhan tradisional, usaha ini tidak hanya menyediakan camilan lezat, tetapi juga membuka lapangan kerja dan meningkatkan kesejahteraan masyarakat sekitar. Tersedia dalam dua varian unggulan, yaitu peyek kacang dengan taburan kacang tanah utuh yang gurih dan melimpah, serta peyek cabai yang menawarkan sensasi pedas menggoda bagi para pencinta rasa berani. Setiap lembar peyek digoreng hingga kering sempurna menggunakan minyak berkualitas, menciptakan tekstur yang renyah dan tahan lama.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Industri Rumahan Section -->
+    <section id="industri">
+        <div class="container">
+            <h2 class="section-title">Usaha Industri Rumahan</h2>
+            <div class="section-content">
+                <p>Selain pertanian, warga Dusun Jomboran juga mengembangkan berbagai usaha industri rumahan yang menjadi ciri khas dan sumber ekonomi alternatif:</p>
+                
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="./img/besek.PNG" alt="Anyaman Besek" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Besek (Anyaman Bambu)</h3>
+                            <p>Selain produk makanan, Jomboran juga dikenal sebagai sentra kerajinan besek atau wadah dari anyaman bambu. Produk ini tidak hanya digunakan sebagai kemasan tradisional yang ramah lingkungan, tetapi juga telah dikembangkan sebagai barang kerajinan bernilai seni. Besek buatan Jomboran sering digunakan dalam acara adat, kemasan hantaran, hingga suvenir.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="./img/jamur.PNG" alt="Budidaya Jamur" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Budidaya Jamur</h3>
+                            <p>Usaha budidaya jamur tiram di Dusun Jomboran merupakan salah satu bentuk pengembangan potensi pertanian lokal yang mengedepankan pemanfaatan sumber daya alam dan tenaga kerja masyarakat setempat. Berlokasi di lingkungan pedesaan yang memiliki iklim dan kelembaban udara yang cocok, Dusun Jomboran menjadi tempat yang ideal untuk budidaya jamur tiram secara alami maupun di dalam kumbung.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="./img/maggot.PNG" alt="Budidaya Maggot" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Budidaya Maggot</h3>
+                            <p>Usaha budidaya maggot di Dusun Jomboran merupakan inovasi warga dalam mengelola limbah organik menjadi sesuatu yang bermanfaat. Maggot, atau larva dari lalat Black Soldier Fly (BSF), dibudidayakan sebagai pakan alternatif bernutrisi tinggi untuk ternak dan ikan. Dengan memanfaatkan sampah dapur dan limbah pasar sebagai bahan pakan maggot, usaha ini sekaligus membantu mengurangi pencemaran lingkungan.</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="./img/tikar.PNG" alt="Budidaya Maggot" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Budidaya Maggot</h3>
+                            <p>Tikar mendong merupakan kerajinan komersiil, diusung dan dikembagkan oleh Bu Nadilah dan Bu Sanem.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Industri rumahan di Dusun Jomboran terus berkembang dan beradaptasi dengan pasar modern. Beberapa produk telah mendapatkan sertifikasi dan dipasarkan secara online, memperluas jangkauan pasar hingga ke luar daerah.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Kesenian dan Kebudayaan Section -->
+    <section id="kesenian">
+        <div class="container">
+            <h2 class="section-title">Kesenian dan Kebudayaan</h2>
+            <div class="section-content">
+                
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="./img/bgsapo.jpg" alt="Jathilan" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Karya Lukis</h3>
+                            <p>Karya Lukis murni hasil karya Bang Sapoy</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="./img/ethek eyer.PNG" alt="Jathilan" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Karya Ethek Eyer</h3>
+                            <p>Kesenian Tari Ethek Eyer</p>
+                        </div>
+                    </div>
+
+                    <div class="gallery-item">
+                        <img src="./img/keroncong.PNG" alt="Jathilan" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Karya Musik</h3>
+                            <p>Karya musik murni oleh bad keroncong Jomboran</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -289,26 +759,55 @@
         <div class="container">
             <h2 class="section-title">Kegiatan Kampung Hijau</h2>
             <div class="section-content">
-                <p>Sejarah singkat, pengantar</p>
+                <p>Dusun Jomboran berkomitmen untuk menjadi kampung hijau yang ramah lingkungan dan berkelanjutan. Berbagai inisiatif telah dilakukan untuk mewujudkan visi ini:</p>
                 
-                <h3>Upaya Desa Jomboran dalam mendukung Kegiatan Kampung Hijau</h3>
+                
                 <ul>
-                    <li><strong>Waste Management System:</strong> Lorem Ipsum</li>
-                    <li><strong>Reforestation Project:</strong> Lorem Ipsum</li>
+                    <li><strong>Sistem Pengelolaan Sampah:</strong> Dusun Jomboran menerapkan sistem pengelolaan sampah terpadu dengan daur ulang dan penggunaan kembali sampah plastik.</li>
+                    <li><strong>Proyek Penghijauan:</strong> Program penanaman pohon dilakukan secara berkala untuk meningkatkan area hijau di dusun di berbagai lokasi.</li>
+                    <li><strong>Pertanian Organik:</strong> Petani di Dusun Jomboran didorong untuk beralih ke metode pertanian organik yang lebih ramah lingkungan dan berkelanjutan.</li>
                 </ul>
+                
+                <div class="gallery">
+                    
+                    <div class="gallery-item">
+                        <img src="./img/bibit.PNG" alt="Penanaman Pohon" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Penanaman Pohon</h3>
+                            <p>Kegiatan penanaman pohon bersama masyarakat</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="./img/tanam.PNG" alt="Pertanian Organik" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Pertanian Organik</h3>
+                            <p>Lahan pertanian organik di Dusun Jomboran</p>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item">
+                        <img src="./img/botol.PNG" alt="Daur Ulang" class="gallery-img">
+                        <div class="gallery-caption">
+                            <h3>Produk Daur Ulang</h3>
+                            <p>Produk fungsional dari bahan daur ulang</p>
+                        </div>
+                    </div>
+                    
+                </div>
                 
                 <div class="image-comparison">
                     <div class="image-container">
-                        <img src="/api/placeholder/500/300" alt="Jomboran Before Green Initiative">
-                        <p class="image-caption">Before: </p>
+                        <img src="./img/progo-old.PNG" alt="Jomboran Sebelum Program Hijau">
+                        <p class="image-caption">Sebelum: Kondisi Dusun Jomboran sebelum program kampung hijau</p>
                     </div>
                     <div class="image-container">
-                        <img src="/api/placeholder/500/300" alt="Jomboran After Green Initiative">
-                        <p class="image-caption">After: </p>
+                        <img src="./img/progo-new.PNG" alt="Jomboran Setelah Program Hijau">
+                        <p class="image-caption">Setelah: Transformasi Dusun Jomboran setelah program kampung hijau</p>
                     </div>
                 </div>
                 
-                <p>Kesimpulan kegiatan</p>
+                <p>Melalui program kampung hijau, Dusun Jomboran berhasil menciptakan lingkungan yang lebih bersih, sehat, dan berkelanjutan. Kesadaran masyarakat akan pentingnya menjaga lingkungan semakin meningkat, dan dusun ini kini menjadi contoh bagi dusun-dusun lain dalam penerapan praktik ramah lingkungan.</p>
             </div>
         </div>
     </section>
@@ -318,33 +817,30 @@
         <div class="container">
             <h2 class="section-title">Tantangan dan Solusi</h2>
             <div class="section-content" align="justify">
-                <p>While our Go Green initiative has achieved significant success, we continue to face challenges that require innovative solutions and community commitment.</p>
+                <p>Meskipun inisiatif kampung hijau telah mencapai banyak keberhasilan, kami masih menghadapi berbagai tantangan yang memerlukan solusi inovatif dan komitmen masyarakat.</p>
                 
                 <div class="challenges-solutions">
                     <div class="challenges-list">
-                        <h3>Key Challenges</h3>
+                        <h3>Tantangan Utama</h3>
                         <ul>
-                            <li><strong>Limited Resources:</strong> As a small rural village, we face budget constraints that sometimes slow the implementation of environmental projects.</li>
-                            <li><strong>Agricultural Traditions:</strong> Some older farmers remain hesitant to adopt new, more sustainable farming practices due to deeply rooted traditional methods.</li>
-                            <li><strong>Waste Disposal Infrastructure:</strong> Our remote location makes transportation of recyclable materials to processing centers difficult and costly.</li>
-                            <li><strong>Climate Change Impacts:</strong> Changing weather patterns have affected local crops and increased the frequency of extreme weather events.</li>
-                            <li><strong>Youth Migration:</strong> Many young people leave the village for education and employment opportunities in urban areas, reducing our workforce for community projects.</li>
+                            <li><strong>Keterbatasan Sumber Daya:</strong> Sebagai dusun kecil di pedesaan, kami menghadapi keterbatasan anggaran yang terkadang memperlambat implementasi proyek-proyek lingkungan.</li>
+                            <li><strong>Infrastruktur Pembuangan Sampah:</strong> Lokasi kami yang terpencil menyulitkan transportasi material daur ulang ke pusat pengolahan dan meningkatkan biaya.</li>
+                            <li><strong>Dampak Perubahan Iklim:</strong> Perubahan pola cuaca telah mempengaruhi tanaman lokal dan meningkatkan frekuensi kejadian cuaca ekstrem.</li>
                         </ul>
                     </div>
                     
                     <div class="solutions-list">
-                        <h3>Implemented Solutions</h3>
+                        <h3>Solusi yang Diterapkan</h3>
                         <ul>
-                            <li><strong>Grant Applications:</strong> Forming a dedicated team to secure environmental grants and partnerships with NGOs to fund green initiatives.</li>
-                            <li><strong>Intergenerational Knowledge Exchange:</strong> Creating programs where younger villagers share modern sustainable practices while learning traditional wisdom from elders.</li>
-                            <li><strong>Community Recycling Center:</strong> Establishing a local processing facility for certain recyclables to reduce transportation needs.</li>
-                            <li><strong>Climate-Resilient Agriculture:</strong> Testing and implementing crop varieties and farming techniques better suited to changing climate conditions.</li>
-                            <li><strong>Remote Work Opportunities:</strong> Developing digital infrastructure to allow young residents to pursue careers while remaining in the village.</li>
+                            <li><strong>Permohonan Hibah:</strong> Membentuk tim khusus untuk mengamankan hibah lingkungan dan kemitraan dengan LSM untuk mendanai inisiatif hijau.</li>
+                            <li><strong>Pertukaran Pengetahuan Antargenerasi:</strong> Menciptakan program di mana penduduk desa yang lebih muda berbagi praktik berkelanjutan modern sambil belajar kearifan tradisional dari para sesepuh.</li>
+                            <li><strong>Pusat Daur Ulang Komunitas:</strong> Membangun fasilitas pengolahan lokal untuk daur ulang tertentu untuk mengurangi kebutuhan transportasi.</li>
+                            <li><strong>Pertanian Tahan Iklim:</strong> Menguji dan menerapkan varietas tanaman dan teknik pertanian yang lebih cocok dengan kondisi iklim yang berubah.</li>
                         </ul>
                     </div>
                 </div>
                 
-                <p>Untuk ke depannya, kami berencana untuk bla bla bla.</p>
+                <p>Untuk ke depannya, kami berencana untuk memperluas program kampung hijau dengan mengintegrasikan teknologi ramah lingkungan yang lebih canggih, memperkuat kerjasama dengan dusun-dusun tetangga, dan mengembangkan ekowisata sebagai sumber pendapatan alternatif bagi masyarakat.</p>
             </div>
         </div>
     </section>
@@ -352,8 +848,82 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Jomboran Village Profile | Disusun oleh </p>
+            <p>&copy; 2025 Jomboran Village Profile | Disusun oleh Tim Pengembangan Dusun Jomboran</p>
         </div>
     </footer>
+    
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top">↑</a>
+    
+    <!-- JavaScript for Charts and Interactivity -->
+    <script>
+        // Occupation Pie Chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('occupationChart').getContext('2d');
+            const occupationChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Petani', 'Pedagang', 'PNS/Pensiunan', 'Buruh', 'Swasta', 'Lainnya'],
+                    datasets: [{
+                        label: 'Mata Pencaharian',
+                        data: [45, 20, 10, 15, 7, 3],
+                        backgroundColor: [
+                            '#4CAF50',
+                            '#8BC34A',
+                            '#CDDC39',
+                            '#FFC107',
+                            '#FF9800',
+                            '#FF5722'
+                        ],
+                        borderColor: [
+                            '#388E3C',
+                            '#689F38',
+                            '#AFB42B',
+                            '#FFA000',
+                            '#F57C00',
+                            '#E64A19'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribusi Mata Pencaharian Penduduk (%)',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Smooth Scrolling for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Back to Top Button Visibility
+        window.addEventListener('scroll', function() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
